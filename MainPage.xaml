@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3.MainPage"
+             Padding="10"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <Grid RowSpacing="15" ColumnSpacing="15" Padding="15" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,*" ColumnDefinitions="*,*,*,*,*,*,0.8*">
+            <Button Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" BackgroundColor="#1D777D" BorderColor="#000000" BorderWidth="2" FontAttributes="Bold" FontSize="20" TextColor="White" CornerRadius="0" Text="Обрати файл" Clicked="OpenFileHandler"/>
+
+            <Frame Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" CornerRadius="0" BackgroundColor="#D9D18F" BorderColor="#000000" >
+                <StackLayout>
+                    <Label LineBreakMode="WordWrap" x:Name="FilePathLabel" TextColor="Black" Text="Файл не обрано" FontAttributes="Bold" FontSize="20" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <Button Grid.Row="0" Grid.Column="7" BackgroundColor="#1D777D" TextColor="White" BorderColor="#000000" BorderWidth="2" FontAttributes="Bold" FontSize="30" CornerRadius="30" Text="і" Clicked="InfoButtonHandler" />
+
+            <Frame x:Name="CPUList" Grid.Row="1" Grid.Column="0" Grid.RowSpan="6" Grid.ColumnSpan="7" BackgroundColor="#AAAAAA" CornerRadius="0" VerticalOptions="Start" HorizontalOptions="Fill" BorderColor="#000000">
+                <Grid RowDefinitions="Auto,*">
+                    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="1.5*,*,*,1.5*,*,*,0.5*" ColumnSpacing="10">
+                        <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" FontSize="17" Text="Модель" TextColor="#000000" FontAttributes="Bold" />
+                        <Label Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="17" Text="Кількість ядер" TextColor="#000000" FontAttributes="Bold" />
+                        <Label Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="17" Text="Базова частота" TextColor="#000000" FontAttributes="Bold" />
+                        <Label Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" FontSize="17" Text="Максимальна частота" TextColor="#000000" FontAttributes="Bold" />
+                        <Label Grid.Row="0" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Center" FontSize="17" Text="Опис" TextColor="#000000" FontAttributes="Bold" />
+                        <Button Grid.Row="0" Grid.Column="6" BackgroundColor="#1D777D" TextColor="White" CornerRadius="0"  FontSize="25" Text="+" Clicked="AddCPUHandler"/>
+                        <BoxView Grid.Row="1" Grid.ColumnSpan="7" HeightRequest="1" BackgroundColor="Gray" Margin="0,10,0,10" />
+                    </Grid>
+
+                    <CollectionView Grid.Row="1" x:Name="CPUCollectionView" ItemsSource="{Binding CPUCollection}" SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="1.5*,*,*,1.5*,*,*,0.5*" ColumnSpacing="10">
+                                    <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Model}" TextColor="#000000" />
+                                    <Label Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding Cores}" TextColor="#000000" />
+                                    <Label Grid.Row="0" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding BaseClock}" TextColor="#000000" />
+                                    <Label Grid.Row="0" Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Center" Text="{Binding BoostClock}" TextColor="#000000" />
+                                    <Button Grid.Row="0" Grid.Column="4" Text="Докладніше" TextColor="White" BackgroundColor="#1D777D" Clicked="ViewDescriptionHandler" HeightRequest="10" CornerRadius="0" />
+                                    <Button Grid.Row="0" Grid.Column="5" Text="Редагувати" TextColor="White" BackgroundColor="#1D777D" Clicked="EditCPUHandler" HeightRequest="10" CornerRadius="0" />
+                                    <Button Grid.Row="0" Grid.Column="6" FontSize="25" Text="-" TextColor="White" BackgroundColor="#1D777D" Clicked="DeleteCPUHandler" HeightRequest="10" CornerRadius="0" />
+                                    <BoxView Grid.Row="1" Grid.ColumnSpan="6" HeightRequest="10" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="8" Grid.Column="2" Grid.RowSpan="6" Grid.ColumnSpan="3" BorderColor="#000000" BackgroundColor="#AAAAAA" CornerRadius="0">
+                <StackLayout>
+                    <Label Text="Задайте параметри пошуку" TextColor="#000000" FontSize="32" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalOptions="Center" Padding="10"/>
+                    <Grid RowDefinitions="*,*,*,*,*,*" ColumnDefinitions="*" ColumnSpacing="10" RowSpacing="10">
+                        <Entry Grid.Row="0" TextColor="#000000" x:Name="ModelEntry" PlaceholderColor="#555555" Placeholder="Введіть модель процесора" />
+                        <Entry Grid.Row="1" TextColor="#000000" x:Name="CoresEntry" PlaceholderColor="#555555" Placeholder="Введіть кількість ядер" />
+                        <Entry Grid.Row="2" TextColor="#000000" x:Name="BaseClockEntry" PlaceholderColor="#555555" Placeholder="Введіть базову частоту" />
+                        <Entry Grid.Row="3" TextColor="#000000" x:Name="BoostClockEntry" PlaceholderColor="#555555" Placeholder="Введіть максимальну частоту" />
+                        <Entry Grid.Row="4" TextColor="#000000" x:Name="DescriptionEntry" PlaceholderColor="#555555" Placeholder="Введіть опис процесора" />
+
+                        <Grid Grid.Row="6"  ColumnDefinitions="*,*" ColumnSpacing="10">
+                            <Button Grid.Column="0" BackgroundColor="#1D777D" TextColor="White" CornerRadius="0" FontAttributes="Bold" FontSize="20" Text="Пошук" Clicked="SearchHandler" />
+                            <Button Grid.Column="1" BackgroundColor="#1D777D" TextColor="White" CornerRadius="0" FontAttributes="Bold" FontSize="20" Text="Очистити" Clicked="ClearFiltersHander" />
+                        </Grid>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </Grid>
+
+    </ScrollView>
+
+</ContentPage>

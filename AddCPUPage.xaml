@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3.AddCPUPage"
+             Title="AddCPUPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
+            <Frame CornerRadius="0" BackgroundColor="#AAAAAA" BorderColor="#000000">
+                <StackLayout>
+                    <Label Text="Додайте новий процесор" TextColor="#000000" FontSize="36" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalOptions="Center" Padding="10"/>
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*" ColumnDefinitions="Auto" RowSpacing="15" ColumnSpacing="15" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="ModelEntry" Placeholder="Введіть модель" PlaceholderColor="#555555" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"/>
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="CoresEntry" Placeholder="Введіть кількість ядер" PlaceholderColor="#555555" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"/>
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="BaseClockEntry" Placeholder="Введіть базову частоту" PlaceholderColor="#555555" Grid.Row="3" Grid.Column="0" HorizontalOptions="Center"/>
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="BoostClockEntry" Placeholder="Введіть максимальну частоту" PlaceholderColor="#555555" Grid.Row="4" Grid.Column="0" HorizontalOptions="Center"/>
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="DescriptionEntry" Placeholder="Додайте опис" PlaceholderColor="#555555" Grid.Row="5" Grid.Column="0" HorizontalOptions="Center"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Text="Зберегти" FontSize="28" TextColor="White" CornerRadius="0" BackgroundColor="#1D777D" BorderColor="#000000" BorderWidth="2" Clicked="SaveButtonHandler" />
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

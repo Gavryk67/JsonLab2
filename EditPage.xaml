@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3.EditPage"
+             Title="EditPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="20">
+            <Frame CornerRadius="0" BackgroundColor="#DEDEDE" BorderColor="#000000">
+                <StackLayout>
+                    <Label Text="Редагування процесора" TextColor="#000000" FontSize="36" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalOptions="Center" Padding="10" />
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*" ColumnDefinitions="Auto,*" RowSpacing="15" ColumnSpacing="15" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Label Grid.Row="1" Grid.Column="0" Text="Модель:" TextColor="#000000" WidthRequest="200" FontSize="18" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Grid.Row="2" Grid.Column="0" Text="Кількість ядер:" TextColor="#000000" WidthRequest="200" FontSize="18" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Grid.Row="3" Grid.Column="0" Text="Базова частота:" TextColor="#000000" WidthRequest="200" FontSize="18" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Grid.Row="4" Grid.Column="0" Text="Максимальна частота:" TextColor="#000000" WidthRequest="200" FontSize="18" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Label Grid.Row="5" Grid.Column="0" Text="Опис:" TextColor="#000000" WidthRequest="200" FontSize="18" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="ModelEntry" Text="{Binding Model}" Grid.Row="1" Grid.Column="1" HorizontalOptions="Center"/>
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="CoresEntry" Text="{Binding Cores}" Grid.Row="2" Grid.Column="1" HorizontalOptions="Center"/>
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="BaseClockEntry" Text="{Binding BaseClock}" Grid.Row="3" Grid.Column="1" HorizontalOptions="Center"/>
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="BoostClockEntry" Text="{Binding BoostClock}" Grid.Row="4" Grid.Column="1" HorizontalOptions="Center"/>
+                        <Entry WidthRequest="600" BackgroundColor="White" TextColor="#000000" x:Name="DescriptionEntry" Text="{Binding Description}" Grid.Row="5" Grid.Column="1"  HorizontalOptions="Center"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Button Text="Зберегти" FontSize="28" TextColor="White" CornerRadius="0" BackgroundColor="#1D777D" BorderColor="#000000" BorderWidth="2" Clicked="SaveButtonHandler" />
+            </HorizontalStackLayout>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
